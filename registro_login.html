@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="witdth=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
+		<title>registro_login</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	</head>
+	<body>
+		<header class="page-header" >
+			<div  class="row" >
+				<div class="thumbnail" style="background:#428BCA">
+					<img src="./img/asa.jpg" alt="logo" class="img-thumbnail">
+				</div>
+			</div>
+		</header>
+		<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="thumbnail panel-primary">
+							<h3 class="panel-heading"><strong>Login</strong></h3>
+							<form name="login" method="">
+								<div>
+									<div class="form-group">
+										<input class="form-control" id="userLogin_email" name="userLogin[email]" required="required" placeholder="Email" type="email">
+									</div>
+									<div class="form-group">
+										<input class="form-control" id="userLogin_password" name="userLogin[password]" required="required" placeholder="Contraseña" type="password">
+									</div>
+								</div>
+								<div class="row btn btn-block center-block">
+									<div class="col-md-2 col-md-offset-3">
+										<button id="userLogin_login" class="btn btn-primary" name="userLogin[login]" type="submit">Entrar</button>
+									</div>
+									<div class="col-md-2">
+										<button id="userLogin_restablecer" class="btn btn-primary" name="userLogin[restrablecer]" type="reset">Restablecer</button>
+									</div>
+
+
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="thumbnail panel-primary">
+							<h3 class="panel-heading"><strong>Registro</strong></h3>
+							<form name="login" method="">
+								<div>
+									<div class="form-group">
+										<input class="form-control" id="userRegistro_nombre" name="userRegistro[nombre]" required="required" placeholder="Nombre" type="text">
+									</div>
+									<div class="form-group">
+										<input class="form-control" id="userRegistro_apellidos" name="userRegistro[apellidos]" required="required" placeholder="Apellidos" type="text">
+									</div>
+									<div class="form-group">
+										<input class="form-control" id="userRegistro_nacimiento" name="userRegistro[nacimiento]" required="required" placeholder="Año Nacimiento" type="text">
+									</div>
+									<div class="form-group">
+										<input class="form-control" id="userRegistro_direccion" name="userRegistro[direccion]" required="required" placeholder="Direccion" type="text">
+									</div>
+									<div class="form-group">
+										<input class="form-control" id="userRegistro_telefono" name="userRegistro[telefono]" required="required" placeholder="Telefono" type="text">
+									</div>
+									<div class="form-group">
+										<input class="form-control" id="userRegistro_email" name="userRegistro[email]" required="required" placeholder="Email" type="email">
+									</div>
+									<div class="form-group">
+										<input class="form-control" id="userRegistro_clave" name="userRegistro[clave]" required="required" placeholder="Contraseña" type="password">
+									</div>
+									<div class="form-group">
+										<input class="form-control" id="userRegistro_repClave" name="userRegistro[repClave]" required="required" placeholder="Repetir Contraseña" type="password">
+									</div>
+								</div>
+								<div class="row btn btn-block center-block">
+									<div class="col-md-3 col-md-offset-3">
+										<button id="userRegistro_registro" class="btn btn-primary" name="userRegistro[registro]" type="submit" >Registrarse</button>
+									</div>
+									<div class="col-md-2">
+										<button id="userRegistro_restablecer" class="btn btn-primary" name="userRegistro[restrablecer]" type="reset">Restablecer</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+		</div>
+	</body>
+</html>
