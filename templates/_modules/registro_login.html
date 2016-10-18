@@ -10,6 +10,7 @@
 		<link href="../../static/css/style.css" rel="stylesheet">
 	</head>
 	<body>
+		<!--inicio navbar-->
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
@@ -34,12 +35,14 @@
 				</div>
 			</div>
 		</nav>
+		<!--fin navbar-->
 		<div class="container">
 				<div class="row">
-					<div class="col-md-6">
-						<div class="thumbnail panel-primary">
+					<!--inicio login-->
+					<div class=" col-md-6">
+						<div class="jumbotron">
 							<h3 class="panel-heading"><strong>Login</strong></h3>
-							<form name="login" method="">
+							<form name="login" method="POST" action="./lista.html">
 								<div>
 									<div class="form-group">
 										<input class="form-control" id="userLogin_email" name="userLogin[email]" required="required" placeholder="Email" type="email">
@@ -53,18 +56,20 @@
 										<button id="userLogin_login" class="btn btn-primary" name="userLogin[login]" type="submit">Entrar</button>
 									</div>
 									<div class="col-md-2">
-										<button id="userLogin_restablecer" class="btn btn-primary" name="userLogin[restrablecer]" type="reset">Restablecer</button>
+										<button  id="userLogin_restablecer" class="btn btn-primary" name="userLogin[restrablecer]" type="reset">Restablecer</button>
 									</div>
-
 
 								</div>
 							</form>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="thumbnail panel-primary">
+					<!--fin login-->
+					
+					<!--inicio registro-->
+					<div class="col-md-6 ">
+						<div class="jumbotron">
 							<h3 class="panel-heading"><strong>Registro</strong></h3>
-							<form name="login" method="">
+							<form name="registro" method="POST" action="./lista.html">
 								<div>
 									<div class="form-group">
 										<input class="form-control" id="userRegistro_nombre" name="userRegistro[nombre]" required="required" placeholder="Nombre" type="text">
@@ -102,6 +107,7 @@
 							</form>
 						</div>
 					</div>
+					<!--fin registro-->
 
 				</div>
 		</div>

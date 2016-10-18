@@ -1,0 +1,4 @@
+NIA               Apellidos                Nombre
+696322            Jarne                    Rubén
+568659            Figueredo                Dariel
+651348            Chato                    Jorge
