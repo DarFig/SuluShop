@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS producto(
 );
 
 CREATE TABLE IF NOT EXISTS foto(
-	id int unsigned primary key auto_increment,
+  id int unsigned primary key auto_increment,
   url varchar(140) not null,
   principal boolean,
 );
@@ -42,3 +42,68 @@ CREATE TABLE IF NOT EXISTS foto_producto(
 		references post (id)
 		on delete cascade on update no action
 );
+
+CREATE TABLE IF NOT EXISTS comentario(
+	id int unsigned primary key auto_increment,
+	comentario varchar(500) not null,
+	fecha date not null,
+	id_usuario int unsigned,
+	index (id_usuario),
+	foreign key (id_usuario)
+		references usuario (id)
+		on delete cascade on update no action,
+	id_producto int unsigned,
+	index (id_producto),
+	foreign key (id_producto)
+		references producto (id)
+		on delete cascade on update no action
+);
+
+CREATE TABLE IF NOT EXISTS puntuacion(
+	id int unsigned primary key auto_increment,
+	puntuacion int unsigned,
+	id_usuario int unsigned,
+	index (id_usuario),
+	foreign key (id_usuario)
+		references usuario (id)
+		on delete cascade on update no action,
+	id_producto int unsigned,
+	index (id_producto),
+	foreign key (id_producto)
+		references producto (id)
+		on delete cascade on update no action
+);
+
+CREATE TABLE IF NOT EXISTS carro(
+	id int unsigned primary key auto_increment,
+	cantidad int unsigned,
+	id_usuario int unsigned,
+	index (id_usuario),
+	foreign key (id_usuario)
+		references usuario (id)
+		on delete cascade on update no action,
+	id_producto int unsigned,
+	index (id_producto),
+	foreign key (id_producto)
+		references producto (id)
+		on delete cascade on update no action
+);
+
+CREATE TABLE IF NOT EXISTS lista(
+	id int unsigned primary key auto_increment,
+	accion varchar(60) not null,
+	fecha date not null,
+	id_usuario int unsigned,
+	index (id_usuario),
+	foreign key (id_usuario)
+		references usuario (id)
+		on delete cascade on update no action,
+	id_producto int unsigned,
+	index (id_producto),
+	foreign key (id_producto)
+		references producto (id)
+		on delete cascade on update no action
+);
+
+
+
