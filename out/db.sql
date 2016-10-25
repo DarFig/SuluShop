@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS producto(
 CREATE TABLE IF NOT EXISTS foto(
   id int unsigned primary key auto_increment,
   url varchar(140) not null,
-  principal boolean,
+  principal boolean
 );
 
 CREATE TABLE IF NOT EXISTS foto_producto(
@@ -34,12 +34,12 @@ CREATE TABLE IF NOT EXISTS foto_producto(
 	id_foto int unsigned,
 	index (id_foto),
 	foreign key (id_foto)
-		references img (id)
+		references foto (id)
 		on delete cascade on update no action,
 	id_producto int unsigned,
 	index (id_producto),
 	foreign key (id_producto)
-		references post (id)
+		references producto (id)
 		on delete cascade on update no action
 );
 
