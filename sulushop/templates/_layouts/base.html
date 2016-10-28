@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="orggue"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="witdth=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
     <meta name="theme-color" content="#d43f3a"/>
     <link rel="icon" href="">
-    <title>SuluShop</title>
-    <base href="/" target=""/>
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="">
+    <title>{% block title %}SuluShop{% endblock %}</title>
+    {% block css %}
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    {% endblock %}
   </head>
   <body>
-    <h1>SuluShop</h1>
-
-    <footer>
+    {% include "_modules/nav.html" %}
+    {% block content %}
+    <h1>hello world</h1>
+    {% endblock %}
+    <footer class="footer">
+      {% include "_modules/footer.html" %}
+      {% block js %}
+      <script src="static/js/jquery-3.1.1.min.js"></script>
+      <script src="static/js/bootstrap.min.js"></script>
+      <script src="static/js/vendor/stars.js"></script>
+      {% endblock %}
     </footer>
   </body>
 </html>

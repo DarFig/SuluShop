@@ -1,205 +1,163 @@
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="witdth=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
-		<meta name="theme-color" content="#d43f3a"/>
-		<link rel="icon" href="">
-		<title>SuluShop | lista_productos</title>
-		<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-		<link href="../../static/css/style.css" rel="stylesheet">
-	</head>
-	<body>
-		<!--inicio navbar-->
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="" href="index.html">
-						<img alt="Brand" src="../../static/img/eshop.png">
-					</a>
-				</div>
-				<p class="navbar-text">SuluShop company</p>
-				<div class="navbar-right">
-					<div class="btn-group" role="group">
-						<a href="perfil.html" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Dariel</a>
-						<a href="lista.html" class="btn btn-warning navbar-btn glyphicon glyphicon-shopping-cart"></a>
-					</div>
-				</div>
-				<div class="navbar-right">
-					<form class="navbar-form" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="buscar">
-						</div>
-						<button type="submit" class="btn btn-default">Buscar</button>
-					</form>
-				</div>
-			</div>
-		</nav>
-		<div class="container">
-			<h1>Listado de productos</h1>
+{% extends "_layouts/base.html" %}
 
-			<div class="jumbotron">
-				<div class="row">
-
-					<!--Articulo1-->
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<a href="detalle.html" class="">
-								<img src="../../static/img/obj_list1.jpg" alt="imagen">
-							</a>
-							<div class="caption">
-								<a href="detalle.html" class="">
-									<h4>Memoria 16GB</h4>
-									<h4>4<span class="small">,95€</span></h4>
-								</a>
-								<p>
-									<a href="" class="btn btn-primary" role="button">Añadir a carrito</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Articulo2-->
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<a href="detalle.html" class="">
-								<img src="../../static/img/obj_list2.jpg" alt="imagen">
-							</a>
-							<div class="caption">
-								<a href="detalle.html" class="">
-									<h4>Weimei We 16GB</h4>
-									<h4>120<span class="small">€</span></h4>
-								</a>
-								<p>
-									<a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Articulo3-->
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<a href="detalle.html" class="">
-								<img src="../../static/img/obj_list3.jpg" alt="imagen">
-							</a>
-							<div class="caption">
-								<a href="detalle.html" class="">
-									<h4>Maizu M3 Note 16GB</h4>
-									<h4>170<span class="small">€</span></h4>
-								</a>
-								<p>
-									<a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Articulo4-->
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<a href="detalle.html" class="">
-								<img src="../../static/img/obj_list4.jpg" alt="imagen">
-							</a>
-							<div class="caption">
-								<a href="detalle.html" class="">
-									<h4> 750 Evo SSD 250GB</h4>
-									<h4>70<span class="small">,95</span></h4>
-								</a>
-								<p>
-									<a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Articulo5-->
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<a href="detalle.html" class="">
-								<img src="../../static/img/obj_list5.jpg" alt="imagen">
-							</a>
-							<div class="caption">
-								<a href="detalle.html" class="">
-									<h4>MP3 MicroSD</h4>
-									<h4>7<span class="small">,90€</span></h4>
-								</a>
-								<p>
-									<a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Articulo6-->
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<a href="detalle.html" class="">
-								<img src="../../static/img/obj_list6.jpg" alt="imagen">
-							</a>
-							<div class="caption">
-								<a href="detalle.html" class="">
-									<h4>MP3 Clip Mint</h4>
-									<h4>23<span class="small">,50€</span></h4>
-								</a>
-								<p>
-									<a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Articulo7-->
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<a href="detalle.html" class="">
-								<img src="../../static/img/obj_list6.jpg" alt="imagen">
-							</a>
-							<div class="caption">
-								<a href="detalle.html" class="">
-									<h4>MP3 Clip Mint Verde</h4>
-									<h4>22<span class="small">€</span></h4>
-								</a>
-								<p>
-									<a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Articulo8-->
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<a href="detalle.html" class="">
-								<img src="../../static/img/obj_list5.jpg" alt="imagen">
-							</a>
-							<div class="caption">
-								<a href="detalle.html" class="">
-									<h4>MP3 Varios Colores</h4>
-									<h4>8<span class="small">€</span></h4>
-								</a>
-								<p>
-									<a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-
-			</div>
-		</div>
+{% block title %}
+Lista de productos | {{ super() }}
+{% endblock %}
 
 
-		<footer class="footer">
-			<div class="container">
-				<p class="text-muted">
-					Ipsum incidunt blanditiis iusto facere dignissimos. Aperiam repellendus veniam vitae porro impedit vitae veritatis. Expedita sint exercitationem quo optio impedit? Autem neque nihil magni odit maiores expedita? Ipsa porro id.
-				</p>
-			</div>
-			<script src="../../static/js/jquery-3.1.1.min.js"></script>
-			<script src="../../static/js/bootstrap.min.js"></script>
-			<script src="../../static/js/vendor/stars.js"></script>
-		</footer>
-	</body>
-</html>
+{% block content %}
+<div class="container">
+  <h1>Listado de productos</h1>
+
+  <div class="jumbotron">
+    <div class="row">
+
+      <!--Articulo1-->
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="detalle.html" class="">
+            <img src="../../static/img/obj_list1.jpg" alt="imagen">
+          </a>
+          <div class="caption">
+            <a href="detalle.html" class="">
+              <h4>Memoria 16GB</h4>
+              <h4>4<span class="small">,95€</span></h4>
+            </a>
+            <p>
+            <a href="" class="btn btn-primary" role="button">Añadir a carrito</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Articulo2-->
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="detalle.html" class="">
+            <img src="../../static/img/obj_list2.jpg" alt="imagen">
+          </a>
+          <div class="caption">
+            <a href="detalle.html" class="">
+              <h4>Weimei We 16GB</h4>
+              <h4>120<span class="small">€</span></h4>
+            </a>
+            <p>
+            <a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Articulo3-->
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="detalle.html" class="">
+            <img src="../../static/img/obj_list3.jpg" alt="imagen">
+          </a>
+          <div class="caption">
+            <a href="detalle.html" class="">
+              <h4>Maizu M3 Note 16GB</h4>
+              <h4>170<span class="small">€</span></h4>
+            </a>
+            <p>
+            <a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Articulo4-->
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="detalle.html" class="">
+            <img src="../../static/img/obj_list4.jpg" alt="imagen">
+          </a>
+          <div class="caption">
+            <a href="detalle.html" class="">
+              <h4> 750 Evo SSD 250GB</h4>
+              <h4>70<span class="small">,95</span></h4>
+            </a>
+            <p>
+            <a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Articulo5-->
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="detalle.html" class="">
+            <img src="../../static/img/obj_list5.jpg" alt="imagen">
+          </a>
+          <div class="caption">
+            <a href="detalle.html" class="">
+              <h4>MP3 MicroSD</h4>
+              <h4>7<span class="small">,90€</span></h4>
+            </a>
+            <p>
+            <a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Articulo6-->
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="detalle.html" class="">
+            <img src="../../static/img/obj_list6.jpg" alt="imagen">
+          </a>
+          <div class="caption">
+            <a href="detalle.html" class="">
+              <h4>MP3 Clip Mint</h4>
+              <h4>23<span class="small">,50€</span></h4>
+            </a>
+            <p>
+            <a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Articulo7-->
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="detalle.html" class="">
+            <img src="../../static/img/obj_list6.jpg" alt="imagen">
+          </a>
+          <div class="caption">
+            <a href="detalle.html" class="">
+              <h4>MP3 Clip Mint Verde</h4>
+              <h4>22<span class="small">€</span></h4>
+            </a>
+            <p>
+            <a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Articulo8-->
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="detalle.html" class="">
+            <img src="../../static/img/obj_list5.jpg" alt="imagen">
+          </a>
+          <div class="caption">
+            <a href="detalle.html" class="">
+              <h4>MP3 Varios Colores</h4>
+              <h4>8<span class="small">€</span></h4>
+            </a>
+            <p>
+            <a href="detalle.html" class="btn btn-primary" role="button">Añadir a carrito</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
