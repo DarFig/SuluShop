@@ -1,48 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="witdth=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
-		<meta name="theme-color" content="#d43f3a"/>
-		<link rel="icon" href="">
-		<title>SuluShop | registro_login</title>
-		<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-		<link href="../../static/css/style.css" rel="stylesheet">
-	</head>
-	<body>
-		<!--inicio navbar-->
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="" href="../../index.html">
-						<img alt="Brand" src="../../static/img/eshop.png">
-					</a>
-				</div>
-				<p class="navbar-text">SuluShop company</p>
-				<div class="navbar-right">
-					<div class="btn-group" role="group">
-						<a href=""class="btn btn-default navbar-btn glyphicon glyphicon-user"> Login</a>
-						<a href=""class="btn btn-warning navbar-btn glyphicon glyphicon-shopping-cart"></a>
-					</div>
-				</div>
-				<div class="navbar-right">
-					<form class="navbar-form" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="buscar">
-						</div>
-						<button type="submit" class="btn btn-default">Buscar</button>
-					</form>
-				</div>
-			</div>
-		</nav>
-		<!--fin navbar-->
-		<div class="container">
+{% extends "_layouts/base.html" %}
+
+{% block title %}
+Registro Login | {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
 				<div class="row">
 					<!--inicio login-->
 					<div class=" col-md-6">
 						<div class="jumbotron">
 							<h3 class="panel-heading"><strong>Login</strong></h3>
-							<form name="login" method="POST" action="./lista.html">
+							<form name="login" method="POST" action="{{ url_for( 'login' ) }}">
 								<div>
 									<div class="form-group">
 										<input class="form-control" id="userLogin_email" name="userLogin[email]" required="required" placeholder="Email" type="email">
@@ -69,7 +39,7 @@
 					<div class="col-md-6 ">
 						<div class="jumbotron">
 							<h3 class="panel-heading"><strong>Registro</strong></h3>
-							<form name="registro" method="POST" action="./lista.html">
+							<form name="registro" method="POST" action="{{ url_for( 'registro' ) }}">
 								<div>
 									<div class="form-group">
 										<input class="form-control" id="userRegistro_nombre" name="userRegistro[nombre]" required="required" placeholder="Nombre" type="text">
@@ -107,19 +77,5 @@
 							</form>
 						</div>
 					</div>
-					<!--fin registro-->
-
-				</div>
-		</div>
-		<footer class="footer">
-			<div class="container">
-				<p class="text-muted">
-					Ipsum incidunt blanditiis iusto facere dignissimos. Aperiam repellendus veniam vitae porro impedit vitae veritatis. Expedita sint exercitationem quo optio impedit? Autem neque nihil magni odit maiores expedita? Ipsa porro id.
-				</p>
-			</div>
-			<script src="../../static/js/jquery-3.1.1.min.js"></script>
-			<script src="../../static/js/bootstrap.min.js"></script>
-			<script src="../../static/js/vendor/stars.js"></script>
-		</footer>		
-	</body>
-</html>
+</div>
+{% endblock %}

@@ -1,43 +1,12 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="unizar"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#d43f3a"/>
-    <link rel="icon" href="">
-    <title>SuluShop | Mi perfil</title>
-    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../static/css/style.css" rel="stylesheet">
-  </head>
-  <body>
+﻿{% extends "_layouts/base.html" %}
 
-<nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="" href="../../index.html">
-            <img alt="Brand" src="../../static/img/eshop.png">
-          </a>
-        </div>
-        <p class="navbar-text">SuluShop company</p>
-        <div class="navbar-right">
-          <div class="btn-group" role="group">
-            <a href="perfil.html"class="btn btn-default navbar-btn glyphicon glyphicon-user"> Ruben</a>
-            <a href="lista.html"class="btn btn-warning navbar-btn glyphicon glyphicon-shopping-cart"></a>
-          </div>
-        </div>
-        <div class="navbar-right">
-          <form class="navbar-form" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="buscar">
-            </div>
-            <button type="submit" class="btn btn-default">Buscar</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-    <!--fin barra de navegacion-->
-    <div class="container-fluid">
+{% block title %}
+Perfil | {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
 	<div class="row">
 	</div>
 	<div class="row">
@@ -182,16 +151,4 @@
 		</div>
 	</div>
 </div>
-<!--FIN ACTIVIDAD-->
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">
-        Ipsum incidunt blanditiis iusto facere dignissimos. Aperiam repellendus veniam vitae porro impedit vitae veritatis. Expedita sint exercitationem quo optio impedit? Autem neque nihil magni odit maiores expedita? Ipsa porro id.
-        </p>
-      </div>
-      <script src="../../static/js/jquery-3.1.1.min.js"></script>
-      <script src="../../static/js/bootstrap.min.js"></script>
-      <script src="../../static/js/vendor/stars.js"></script>
-    </footer>
-  </body>
-</html>
+{% endblock %}
