@@ -1,7 +1,8 @@
 SELECT accion, fecha, producto
 FROM lista, producto
-WHERE lista.id = producto.id;
-
+WHERE lista.id = producto.id
+ORDER BY fecha
+LIMIT 5;
 
 SELECT nombre, precio, url
 FROM producto,foto_producto,foto
@@ -12,4 +13,8 @@ AND principal=TRUE;
 SELECT nombre,precio,puntuacion,descripcion,detalles
 FROM producto;
 //Vendedor?
+
+UPDATE producto
+SET nombre=NUEVONOMBRE
+WHERE nombre=NOMBREDELPRODUCTO;
 
