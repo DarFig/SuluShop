@@ -1,0 +1,15 @@
+SELECT accion, fecha, producto
+FROM lista, producto
+WHERE lista.id = producto.id;
+
+
+SELECT nombre, precio, url
+FROM producto,foto_producto,foto
+WHERE producto.id=foto_producto.id_producto
+AND foto_producto.id_foto=foto.id
+AND principal=TRUE;
+
+SELECT nombre,precio,puntuacion,descripcion,detalles
+FROM producto;
+//Vendedor?
+
