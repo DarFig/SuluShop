@@ -1,0 +1,59 @@
+{% extends "_layouts/base.html" %}
+
+{% block title %}
+Carrito | {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  <strong>
+    <div class="row">
+      <div class="col-md-6">Producto</div>
+      <div class="col-md-2">Precio</div>
+      <div class="col-md-2">Cantidad</div>
+      <div class="col-md-2"></div>
+    </div>
+    <hr style="height:3px;border:none;color:#eee;background-color:#eee;" />
+  </strong>
+  <div class="container">
+      <!--Inicia bucle de items en el carrito-->
+      <form action="/" class="form-inline" method="POST">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+              <div class="col-sm-100x10010">
+                <h4 class="nomargin">Product 1</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            {{ 4.155 | round(2,'ceil')}}€
+          </div>
+          <div class="col-md-2">
+            <input type=xs"number" class="form-control text-center input-sm" value="1">
+          </div>
+          <div class="col-md-2">
+            <!--<button class="btn btn-default btn-sm" type="submit"><i class="glyphicon glyphicon-refresh"></i></button>-->
+            <button class="btn btn-danger btn-sm" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
+          </div>
+        </div>
+        <hr style="height:3px;border:none;color:#eee;background-color:#eee;" />
+      </form>
+      <!--Fin bucle de items en el carrito-->
+
+      <div class="row">
+        <div class="col-md-6">
+          <a href="/" class="btn btn-warning"><i class="faa fa-angle-left"></i> Continuar comprando</a>
+        </div>
+        <div class="col-md-2 offset-md-3">
+          <strong>Total {{ 4.155 | round(2,'ceil') }}€</strong>
+        </div>
+        <div class="col-md-2 offset-md-3">
+          <a href="carrito?buy=True" class="btn btn-success btn-block">Comprar <i class="fa fa-angle-right"></i></a>
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
