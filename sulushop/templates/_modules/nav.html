@@ -2,15 +2,19 @@
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <a class="" href="index.html">
+      <a class="" href="/">
         <img alt="Brand" src="/static/img/eshop.png">
       </a>
     </div>
     <p class="navbar-text">SuluShop company</p>
     <div class="navbar-right">
       <div class="btn-group" role="group">
-        <a href="/registro_login.html" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Login</a>
-        <a href="/carrito" class="btn btn-warning navbar-btn glyphicon glyphicon-shopping-cart"></a>
+        {% if loggedin %}
+        <a href="registro_login" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Login</a>
+        {% else %}
+        <a href="perfil/" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Perfil</a>
+        {% endif %}
+        <a href="carrito" class="btn btn-warning navbar-btn glyphicon glyphicon-shopping-cart"></a>
       </div>
     </div>
     <div class="navbar-right">

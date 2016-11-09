@@ -1,29 +1,35 @@
-import json
 from sulushop import app
+from flask import jsonify
 from flask import request
 from flask import render_template
 from flask import redirect
 from flask import url_for
 from flask import make_response
 from flask import url_for
+from flask_mysqldb import MySQL
 
+mysql = MySQL(app)
 
 from carrito import *
 
 
 @app.route('/')
 def index():
-    return render_template("_modules/lista.html")
+    cur = mysql.connection.cursor()
+    cur.execute('''SELECT * FROM tienda_producto''')
+    summary = cur.fetchall()
+    data = map(list, summary)
+    return render_template('_views/lista.html', productos=data)
+    # productos = jsonify(productos=cur.fetchall())
+    # return render_template("_views/lista.html", productos=productos)
 
 
-@app.route('/')
-@app.route('/registro_login.html')
+@app.route('/login/')
 def regLog():
     return render_template("_views/registro_login.html")
 
 
-@app.route('/')
-@app.route('/templates/_modules/perfil.html')
+@app.route('/perfil/')
 def perfil():
     return render_template("_views/perfil.html")
 

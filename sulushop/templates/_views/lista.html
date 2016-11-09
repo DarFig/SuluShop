@@ -8,6 +8,11 @@ Lista de productos | {{ super() }}
 {% block content %}
 <div class="container">
   <h1>Listado de productos</h1>
+  {% for producto in productos%}
+  <p>
+  {{ producto[1]}}
+  </p>
+  {% endfor %}
 
   <div class="jumbotron">
     <div class="row">
