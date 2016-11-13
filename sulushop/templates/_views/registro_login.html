@@ -15,10 +15,10 @@ Registro Login | {{ super() }}
 							<form name="login" method="POST" action="{{ url_for( 'login' ) }}">
 								<div>
 									<div class="form-group">
-										<input class="form-control" id="userLogin_email" name="userLogin[email]" required="required" placeholder="Email" type="email">
+										<input class="form-control" id="userLogin_email" name="userLogin[email]" value="{{saves.get('email', ' ')}}" required="required" placeholder="Email" type="email">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userLogin_password" name="userLogin[password]" required="required" placeholder="Contraseña" type="password">
+										<input class="form-control" id="userLogin_password" name="userLogin[password]" value="{{saves.get('password', ' ')}}" required="required" placeholder="Contraseña" type="password">
 									</div>
 								</div>
 								<div class="row btn btn-block center-block">
@@ -57,10 +57,10 @@ Registro Login | {{ super() }}
 										<input class="form-control" id="userRegistro_telefono" name="userRegistro[telefono]" required="required" placeholder="Telefono" type="text">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_email" name="userRegistro[email]" required="required" placeholder="Email" type="email">
+										<input class="form-control" id="userRegistro_email" name="userRegistro[email]" value="{{saves.get('email', ' ')}}" required="required" placeholder="Email" type="email">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_clave" name="userRegistro[clave]" required="required" placeholder="Contraseña" type="password">
+										<input class="form-control" id="userRegistro_clave" name="userRegistro[clave]" value="{{saves.get('password', ' ')}}" required="required" placeholder="Contraseña" type="password">
 									</div>
 									<div class="form-group">
 										<input class="form-control" id="userRegistro_repClave" name="userRegistro[repClave]" required="required" placeholder="Repetir Contraseña" type="password">
