@@ -6,10 +6,18 @@ from flask import redirect
 from flask import url_for
 from flask import make_response
 
-
 from login import *
 
-@app.route('/registro', methods=['POST'])#todo
+#def insert_usuario(data):
+#	cur = mysql.connection.cursor()
+#	cur.execute('''INSERT INTO usuario (nombre, apellidos, fecha_nacimiento, direccion, #email, telefono, contrasena) VALLUES (?, ?, ?, ?, ?, ?, ?)''' % (
+#		data.get('nombre', ' '), data.get('apellidos', ' '), data.get('nacimiento', #' '), data.get('direccion', ' '), data.get('email', ' '), data.get('telefono', ' '), data.get('clave', ' ')
+	
+#	))
+	
+	
+
+@app.route('/registro', methods=['POST'])#todo meter datos en base
 def registro():
 	response = make_response( redirect(url_for('perfil')))
 	data = get_user_cookie()

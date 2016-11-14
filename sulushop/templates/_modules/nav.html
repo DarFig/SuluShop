@@ -9,11 +9,12 @@
     <p class="navbar-text">SuluShop company</p>
     <div class="navbar-right">
       <div class="btn-group" role="group">
-        {% if loggedin %}
-        <a href="registro_login" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Login</a>
+        {% if logueado %}
+       	<a href="perfil/" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Perfil</a>
+       
         {% else %}
-        <a href="perfil/" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Perfil</a>
-        {% endif %}
+ 	<a href="login/" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Login</a>
+         {% endif %}
         <a href="carrito" class="btn btn-warning navbar-btn glyphicon glyphicon-shopping-cart"></a>
       </div>
     </div>

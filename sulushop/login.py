@@ -12,7 +12,7 @@ def get_user_cookie():
 	try:
 		data = json.loads(request.cookies.get('character'))
 	except TypeError:
-		data = ""
+		data = {}
 	return data
 
 @app.route('/login/')
@@ -20,7 +20,7 @@ def regLog():
 	data = get_user_cookie()
 	return render_template("_views/registro_login.html", saves=data)
 		
-@app.route('/login', methods=['POST'])#todo
+@app.route('/login/', methods=['POST'])#todo meter datos en base
 def login():
 	response = make_response(redirect(url_for('index')))
 	data = get_user_cookie()
