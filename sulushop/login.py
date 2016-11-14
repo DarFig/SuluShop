@@ -12,21 +12,20 @@ def get_user_cookie():
 	try:
 		data = json.loads(request.cookies.get('character'))
 	except TypeError:
-		data{}
+		data = ""
 	return data
 
 @app.route('/login/')
 def regLog():
-	data = get_saved_data()
-    return render_template("_views/registro_login.html", saves=data)
-	
-	
+	data = get_user_cookie()
+	return render_template("_views/registro_login.html", saves=data)
+		
 @app.route('/login', methods=['POST'])#todo
 def login():
-    response = make_response( redirect(url_for('index')))
+	response = make_response(redirect(url_for('index')))
 	data = get_user_cookie()
 	data.update(dict(request.form.items()))
 	response.set_cookie('character', json.dumps(data))
-    return response
+	return response
 
 

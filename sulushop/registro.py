@@ -11,8 +11,8 @@ from login import *
 
 @app.route('/registro', methods=['POST'])#todo
 def registro():
-    response = make_response( redirect(url_for('perfil')))
+	response = make_response( redirect(url_for('perfil')))
 	data = get_user_cookie()
 	data.update(dict(request.form.items()))
 	response.set_cookie('character', json.dumps(data))
-    return response
+	return response
