@@ -21,15 +21,15 @@ Perfil | {{ super() }}
 				<button type="file" class="btn btn-default">Cambiar imagen...</button>
 				</div>
 				<div class="col-md-9">
-					<p><b>Nombre:</b><br>Ruben<br></p>
-					<p><b>Apellidos:</b><br>Jarne Cabanero<br></p>
-					<p><b>Fecha de nacimiento:</b><br>12-01-1996<br></p>
-					<p><b>Direccion:</b><br>Alarife marien de Marguan 6,6A<br></p>
-					<p><b>Telefono:</b><br>645515267<br></p>
-					<p><b>E-mail:</b><br>{{saves.get('email')}}<br></p>
+					<p><b>Nombre:</b><br>{{saves.get('userLogin[nombre]', ' ')}} <br></p>
+					<p><b>Apellidos:</b><br>{{saves.get('userLogin[apellidos]', ' ')}} <br></p>
+					<p><b>Fecha de nacimiento:</b><br>{{saves.get('userLogin[nacimiento]', ' ')}} <br></p>
+					<p><b>Direccion:</b><br>{{saves.get('userLogin[direccion]', ' ')}} <br></p>
+					<p><b>Telefono:</b><br>{{saves.get('userLogin[telefono]', ' ')}} <br></p>
+					<p><b>E-mail:</b><br>{{saves.get('userLogin[email]', ' ')}}<br></p>
 					<br/><a href="contraseña.html"><button type="button" class="btn btn-default">Cambiar contrasena</button>
 					<a href="modificar.html"><button type="button" class="btn btn-default">Modificar datos</button></a>
-					<br/><a href="eliminar.html">Eliminar cuenta</a>
+					<br/><a href="/logout/">Eliminar cuenta</a>
 				</div>
 			</div>
 		</div>

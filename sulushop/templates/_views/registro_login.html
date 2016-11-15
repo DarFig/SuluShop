@@ -15,10 +15,10 @@ Registro Login | {{ super() }}
 							<form name="login" method="POST" action="{{ url_for( 'login' ) }}">
 								<div>
 									<div class="form-group">
-										<input class="form-control" id="userLogin_email" name="userLogin[email]" value="{{saves.get('email', ' ')}}" required="required" placeholder="Email" type="email">
+										<input class="form-control" id="userLogin_email" name="userLogin[email]" value="{{saves.get('userLogin[email]', ' ')}}" required="required" placeholder="Email" type="email">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userLogin_password" name="userLogin[password]" value="{{saves.get('password', ' ')}}" required="required" placeholder="Contraseña" type="password">
+										<input class="form-control" id="userLogin_password" name="userLogin[password]" value="{{saves.get('userLogin[password]', ' ')}}" required="required" placeholder="Contraseña" type="password">
 									</div>
 								</div>
 								<div class="row btn btn-block center-block">
@@ -34,7 +34,7 @@ Registro Login | {{ super() }}
 						</div>
 					</div>
 					<!--fin login-->
-					
+
 					<!--inicio registro-->
 					<div class="col-md-6 ">
 						<div class="jumbotron">
@@ -42,28 +42,28 @@ Registro Login | {{ super() }}
 							<form name="registro" method="POST" action="{{ url_for( 'registro' ) }}">
 								<div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_nombre" name="userRegistro[nombre]" required="required" placeholder="Nombre" type="text">
+										<input class="form-control" id="userRegistro_nombre" name="userLogin[nombre]" value="{{saves.get('userLogin[nombre]', '')}}" required="required" placeholder="Nombre" type="text">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_apellidos" name="userRegistro[apellidos]" required="required" placeholder="Apellidos" type="text">
+										<input class="form-control" id="userRegistro_apellidos" name="userLogin[apellidos]" value="{{saves.get('userLogin[apellidos]', '')}}" required="required" placeholder="Apellidos" type="text">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_nacimiento" name="userRegistro[nacimiento]" required="required" placeholder="Año Nacimiento" type="text">
+										<input class="form-control" id="userRegistro_nacimiento" name="userLogin[nacimiento]" value="{{saves.get('userLogin[nacimiento]', '')}}" required="required" placeholder="Año Nacimiento" type="text">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_direccion" name="userRegistro[direccion]" required="required" placeholder="Direccion" type="text">
+										<input class="form-control" id="userRegistro_direccion" name="userLogin[direccion]" value="{{saves.get('userLogin[direccion]', '')}}" required="required" placeholder="Direccion" type="text">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_telefono" name="userRegistro[telefono]" required="required" placeholder="Telefono" type="text">
+										<input class="form-control" id="userRegistro_telefono" name="userLogin[telefono]" value="{{saves.get('userLogin[telefono]', '')}}" value="{{saves.get('userLogin[]', ' ')}}" required="required" placeholder="Telefono" type="text">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_email" name="userRegistro[email]" value="{{saves.get('email', ' ')}}" required="required" placeholder="Email" type="email">
+										<input class="form-control" id="userRegistro_email" name="userLogin[email]" value="{{saves.get('userLogin[email]', '')}}" required="required" placeholder="Email" type="email">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_clave" name="userRegistro[clave]" value="{{saves.get('password', ' ')}}" required="required" placeholder="Contraseña" type="password">
+										<input class="form-control" id="userRegistro_clave" name="userLogin[password]" value="{{saves.get('userLogin[password]', '')}}" required="required" placeholder="Contraseña" type="password">
 									</div>
 									<div class="form-group">
-										<input class="form-control" id="userRegistro_repClave" name="userRegistro[repClave]" required="required" placeholder="Repetir Contraseña" type="password">
+										<input class="form-control" id="userRegistro_repClave" name="userLogin[repClave]" value="{{saves.get('userLogin[repClave]', '')}}" required="required" placeholder="Repetir Contraseña" type="password">
 									</div>
 								</div>
 								<div class="row btn btn-block center-block">

@@ -7,15 +7,15 @@ from flask import url_for
 from flask import make_response
 
 from login import *
-
+#from views import *
 #def insert_usuario(data):
 #	cur = mysql.connection.cursor()
-#	cur.execute('''INSERT INTO usuario (nombre, apellidos, fecha_nacimiento, direccion, #email, telefono, contrasena) VALLUES (?, ?, ?, ?, ?, ?, ?)''' % (
-#		data.get('nombre', ' '), data.get('apellidos', ' '), data.get('nacimiento', #' '), data.get('direccion', ' '), data.get('email', ' '), data.get('telefono', ' '), data.get('clave', ' ')
-	
+#	cur.execute('''INSERT INTO usuario (nombre, apellidos, fecha_nacimiento, direccion, #email, telefono, contrasena) VALLUES (%s)''' % (
+#		data.get('userLogin[nombre]', ' '), data.get('userLogin[apellidos]', ' '), data.get('userLogin[nacimiento]', ' '), data.get('userLogin[direccion]', ' '), data.get('userLogin[email]', ' '), data.get('userLogin[telefono]', ' '), data.get('userLogin[password]', ' ')
+#
 #	))
-	
-	
+
+
 
 @app.route('/registro', methods=['POST'])#todo meter datos en base
 def registro():
