@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS usuario(
   id int unsigned AUTO_INCREMENT PRIMARY key,
   nombre varchar(140) NOT null,
   apellidos varchar(140) not null,
-  fecha_nacimiento date not null,
+  fecha_nacimiento varchar(140) not null,
   direccion varchar(140) not null,
   email varchar(140) not null,
   telefono varchar(20) not null,
@@ -16,11 +16,11 @@ CREATE TABLE IF NOT EXISTS usuario(
 CREATE TABLE IF NOT EXISTS producto(
   id int unsigned AUTO_INCREMENT PRIMARY key,
   nombre varchar(140) not null,
+	nombreVendedor varchar(140) not null,
   precio double not null,
   puntuacion double,
   descripcion varchar(500) not null,
-  detalles varchar(1500) not null,
-  stock boolean not null
+  detalles varchar(1500) not null
 );
 
 CREATE TABLE IF NOT EXISTS foto(
@@ -33,8 +33,7 @@ CREATE TABLE IF NOT EXISTS foto_producto(
 	id int unsigned primary key auto_increment,
 	id_foto int unsigned,
 	index (id_foto),
-	foreign key (id_foto)
-		references foto (id)
+	foreign key (id_foto) references foto (id)
 		on delete cascade on update no action,
 	id_producto int unsigned,
 	index (id_producto),

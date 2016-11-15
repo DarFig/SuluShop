@@ -6,7 +6,8 @@ from flask import redirect
 from flask import url_for
 from flask import make_response
 from flask import session
-#import forms
+
+from views import mysql
 
 def get_user_cookie():
 	try:
@@ -20,12 +21,14 @@ def regLog():
 	data = get_user_cookie()
 	return render_template("_views/registro_login.html", saves=data)
 
-@app.route('/login/', methods=['POST'])#todo meter datos en base
+@app.route('/login/', methods=['POST'])
 def login():
-	#logForm = loginForm(request.form)
 	formulario = dict(request.form.items())
 	data = get_user_cookie()
-	if formulario.get('userLogin[email]', ' ') == data.get('userLogin[email]', ' ') and formulario.get('userLogin[password]', ' ') == data.get('userLogin[password]', ' '):
+	cur = mysql.connection.cursor()
+	cur.execute('''SELECT contrasena FROM usuario where email = %s ''', [formulario.get('userLogin[email]', ' ')] )
+	clave = cur.fetchone()
+	if formulario.get('userLogin[password]', ' ') == clave[0]:
 		data.update(dict(request.form.items()))
 		response = make_response(redirect(url_for('index')))
 		response.set_cookie('character', json.dumps(data))
