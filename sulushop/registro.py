@@ -15,7 +15,7 @@ def insert_usuario(data):
 	mysql.connection.commit()
 
 
-@app.route('/registro', methods=['POST'])#todo meter datos en base
+@app.route('/registro', methods=['POST'])
 def registro():
 	response = make_response( redirect(url_for('perfil')))
 	data = get_user_cookie()

@@ -28,7 +28,8 @@ def login():
 	cur = mysql.connection.cursor()
 	cur.execute('''SELECT contrasena FROM usuario where email = %s ''', [formulario.get('userLogin[email]', ' ')] )
 	clave = cur.fetchone()
-	if formulario.get('userLogin[password]', ' ') == clave[0]:
+	
+	if clave and formulario.get('userLogin[password]', ' ') == clave[0]:
 		data.update(dict(request.form.items()))
 		response = make_response(redirect(url_for('index')))
 		response.set_cookie('character', json.dumps(data))
