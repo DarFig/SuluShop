@@ -22,7 +22,7 @@ def deletUser():
 def perfil():
 	data = get_user_cookie()
 	cur = mysql.connection.cursor()
-	cur.execute('''SELECT nombre, apellidos, fecha_nacimiento, direccion, telefono, email FROM usuario where email = %s ''', [data.get('userLogin[email]', ' ')] )
+	cur.execute('''SELECT nombre, apellidos, fecha_nacimiento, direccion, telefono, email, imagen FROM usuario where email = %s ''', [data.get('userLogin[email]', ' ')] )
 	summary = cur.fetchall()
 	datos = map(list, summary)
 	return render_template("_views/perfil.html", save=datos,logueado=data)

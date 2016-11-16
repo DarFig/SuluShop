@@ -16,12 +16,13 @@ Perfil | {{ super() }}
 			</h1>
 			<hr>
 			<div class="row">
+				{% for saves in save%}
 				<div class="col-md-3">
-					<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/"/ width=200 height=200><br/></br>
+					<img alt="Bootstrap Image Preview" src="{{saves[6]}}"/ width=200 height=200><br/></br>
 				<button type="file" class="btn btn-default">Cambiar imagen...</button>
 				</div>
 				<div class="col-md-9">
-					{% for saves in save%}
+				
 					<p><b>Nombre:</b><br>{{saves[0] }}<br></p>
 					<p><b>Apellidos:</b><br>{{saves[1]}}<br></p>
 					<p><b>Fecha de nacimiento:</b><br>{{ saves[2] }}<br></p>

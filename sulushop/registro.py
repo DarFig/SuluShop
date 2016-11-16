@@ -10,8 +10,8 @@ from login import *
 from views import mysql
 def insert_usuario(data):
 	cur = mysql.connection.cursor()
-	cur.execute('''INSERT INTO usuario (nombre, apellidos, fecha_nacimiento, direccion, email, telefono, contrasena)
-	VALUES (%s, %s, %s, %s, %s, %s, %s)''', (data.get('userLogin[nombre]', ' '), data.get('userLogin[apellidos]', ' '), data.get('userLogin[nacimiento]', ' '), data.get('userLogin[direccion]', ' '), data.get('userLogin[email]', ' '), data.get('userLogin[telefono]', ' '), data.get('userLogin[password]', ' ')))
+	cur.execute('''INSERT INTO usuario (nombre, apellidos, fecha_nacimiento, direccion, email, telefono, contrasena, imagen)
+	VALUES (%s, %s, %s, %s, %s, %s, %s, %s)''', (data.get('userLogin[nombre]', ' '), data.get('userLogin[apellidos]', ' '), data.get('userLogin[nacimiento]', ' '), data.get('userLogin[direccion]', ' '), data.get('userLogin[email]', ' '), data.get('userLogin[telefono]', ' '), data.get('userLogin[password]', ' '), '/static/img/avatar.jpg'))
 	mysql.connection.commit()
 
 
