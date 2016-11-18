@@ -10,9 +10,9 @@ from util import *
 @login_required
 def cart(buy=False):
     cur = mysql.connection.cursor()
-    pk = int(get_user_id())
-    print pk
-    cur.execute('''SELECT * FROM carro WHERE id_usuario = %d''',[pk])
+    string = '''SELECT * FROM carro WHERE id_usuario = {}
+            '''.format(int(get_user_id()))
+    cur.execute(string)
     summary = cur.fetchall()
     data = map(list, summary)
 
