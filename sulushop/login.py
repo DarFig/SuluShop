@@ -8,20 +8,16 @@ from flask import make_response
 from flask import session
 
 from views import mysql
-
-def get_user_cookie():
-	try:
-		data = json.loads(request.cookies.get('character'))
-	except TypeError:
-		data = {}
-	return data
+from util import *
 
 @app.route('/login/')
+@logout_required
 def regLog():
 	data = get_user_cookie()
 	return render_template("_views/registro_login.html", saves=data)
 
 @app.route('/login/', methods=['POST'])
+@logout_required
 def login():
 	formulario = dict(request.form.items())
 	data = get_user_cookie()
@@ -38,6 +34,7 @@ def login():
 	return response
 
 @app.route('/logout/')
+@login_required
 def loggout():
 	response = make_response(redirect(url_for('index')))
 	data = {}
