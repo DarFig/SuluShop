@@ -2,8 +2,8 @@ from sulushop import app
 from flask import request
 from flask import render_template
 
-from views import mysql
-from util import *
+from ..views import mysql
+from ..util import *
 
 
 @app.route('/carrito/', methods = ['GET',])

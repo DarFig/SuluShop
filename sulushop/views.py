@@ -6,10 +6,10 @@ from flask_mysqldb import MySQL
 
 mysql = MySQL(app)
 
-from carrito import *
-from login import *
-from perfil import *
-from registro import *
+from controllers.registro import *
+from controllers.carrito import *
+from controllers.login import *
+from controllers.perfil import *
 
 @app.route('/')
 def index():

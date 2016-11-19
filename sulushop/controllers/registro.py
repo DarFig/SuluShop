@@ -6,8 +6,10 @@ from flask import redirect
 from flask import url_for
 from flask import make_response
 
-from login import *
-from views import mysql
+
+from ..views import mysql
+from ..util import *
+
 def insert_usuario(data):
 	cur = mysql.connection.cursor()
 	cur.execute('''INSERT INTO usuario (nombre, apellidos, fecha_nacimiento, direccion, email, telefono, contrasena, imagen)

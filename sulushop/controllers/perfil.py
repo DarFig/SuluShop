@@ -3,8 +3,8 @@ from flask import request
 from flask import render_template
 
 
-from login import *
-from views import mysql
+from ..views import mysql
+from ..util import *
 
 @app.route('/deletUser/')
 @login_required

@@ -7,8 +7,8 @@ from flask import url_for
 from flask import make_response
 from flask import session
 
-from views import mysql
-from util import *
+from ..views import mysql
+from ..util import *
 
 @app.route('/login/')
 @logout_required
