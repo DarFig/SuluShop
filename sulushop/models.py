@@ -22,3 +22,7 @@ class Producto(db.Model):
 
 class FotoProducto(db.Model):
     __table__ = db.Model.metadata.tables['foto_producto']
+
+
+class Lista(db.Model):
+    __table__ = db.Model.metadata.tables['lista']

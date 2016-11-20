@@ -69,3 +69,22 @@ def get_product_cover(pk):
         return []
 
     return picture.url
+
+
+def get_action_list():
+    actions = Lista.query.filter_by(
+            id_usuario = get_user_id(),
+            id_producto = pk,
+            ).all()
+
+    return actions
+
+
+def get_favorite_list():
+    favorites = Lista.query.filter_by(
+            id_usuario = get_user_id(),
+            id_producto = pk,
+            accion = 'favorito',
+            ).all()
+
+    return favorites
