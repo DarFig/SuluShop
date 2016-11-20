@@ -2,7 +2,7 @@ import json
 from functools import wraps
 from flask import request, redirect, url_for
 
-from views import mysql
+from models import *
 
 
 def login_required(f):
@@ -32,43 +32,40 @@ def get_user_cookie():
 
 
 def get_user_id():
-    email = get_user_cookie()['userLogin[email]']
+    e_mail = get_user_cookie()['userLogin[email]']
 
-    cur = mysql.connection.cursor()
-    cur.execute('''SELECT id FROM usuario WHERE email = %s''', [email])
-    summary = cur.fetchall()
-    data = map(list, summary)
+    user = Usuario.query.filter_by(email=e_mail).first()
 
-    return data[0][0]
+    return user.id
+
+
+def get_user():
+    e_mail = get_user_cookie()['userLogin[email]']
+
+    user = Usuario.query.filter_by(email=e_mail).first()
+
+    return user
 
 
 def get_product_pictures(pk):
-    cur = mysql.connection.cursor()
-    string = '''SELECT foto.url, foto.principal
-                FROM foto
-                INNER JOIN foto_producto on foto_producto.id_foto = foto.id
-                WHERE foto_producto.id_producto = {}
-                GROUP BY foto.id
-            '''.format(pk)
-    cur.execute(string)
-    photo = cur.fetchall()
-    data = map(list, photo)
+    picture = Foto.query.join(FotoProducto).filter(
+            FotoProducto.id_producto == pk,
+            FotoProducto.id_foto == Foto.id
+            ).all()
 
-    return data
+    if not picture:
+        return []
+
+    return picture
 
 
 def get_product_cover(pk):
-    cur = mysql.connection.cursor()
-    string = '''SELECT foto.url, foto.principal
-                FROM foto
-                INNER JOIN foto_producto on foto_producto.id_foto = foto.id
-                WHERE foto_producto.id_producto = {} AND foto.principal = 1
-                GROUP BY foto.id
-                ORDER BY foto.id DESC
-                LIMIT 1
-            '''.format(pk)
-    cur.execute(string)
-    photo = cur.fetchall()
-    data = map(list, photo)
+    picture = Foto.query.join(FotoProducto).filter(
+            FotoProducto.id_producto == pk,
+            FotoProducto.id_foto == Foto.id,
+            ).first()
 
-    return data
+    if not picture:
+        return []
+
+    return picture.url
