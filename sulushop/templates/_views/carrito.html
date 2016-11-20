@@ -18,21 +18,22 @@ Carrito | {{ super() }}
   </strong>
   <div class="container">
       <!--Inicia bucle de items en el carrito-->
+      {% for producto in productos %}
       <form action="/" class="form-inline" method="POST">
         <div class="row">
           <div class="col-md-6">
             <div class="row">
-              <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+              <div class="col-sm-2 hidden-xs"><img src="{{ producto[4][0][0] }}" alt="..." class="img-responsive"/></div>
               <div class="col-sm-100x10010">
-                <h4 class="nomargin">Product 1</h4>
+                <h4 class="nomargin">{{ producto[0] }}</h4>
               </div>
             </div>
           </div>
           <div class="col-md-2">
-            {{ 4.155 | round(2,'ceil')}}€
+            {{ producto[1] | round(2,'ceil')}}€
           </div>
           <div class="col-md-2">
-            <input type=xs"number" class="form-control text-center input-sm" value="1">
+            {{ producto[2] }}
           </div>
           <div class="col-md-2">
             <!--<button class="btn btn-default btn-sm" type="submit"><i class="glyphicon glyphicon-refresh"></i></button>-->
@@ -41,6 +42,7 @@ Carrito | {{ super() }}
         </div>
         <hr style="height:3px;border:none;color:#eee;background-color:#eee;" />
       </form>
+      {% endfor  %}
       <!--Fin bucle de items en el carrito-->
 
       <div class="row">
