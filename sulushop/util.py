@@ -1,7 +1,13 @@
+from sulushop import login_manager
 import json
 from flask import request
 
 from models import *
+
+
+@login_manager.user_loader
+def load_user(user_id):
+        return Usuario.get(user_id)
 
 
 def get_user_cookie():

@@ -6,6 +6,8 @@ from flask.ext.gzip import Gzip
 
 
 app = Flask(__name__)
+app.secret_key = 'some_secret'
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 gzip = Gzip(app)
