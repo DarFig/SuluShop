@@ -19,11 +19,11 @@ from ..decorators import *
 
 class UpdateCart(FlaskForm):
     pk = IntegerField('pk', validators=[NumberRange(min=0)])
-    name = StringField('pk', validators=[DataRequired()])
+    name = StringField('name', validators=[DataRequired()])
 
 
 class AddToCart(UpdateCart):
-    quantity = IntegerField('pk', validators=[NumberRange(min=1)])
+    quantity = IntegerField('quantity', validators=[NumberRange(min=1)])
 
 
 def insert_atributes(producto):
@@ -33,7 +33,7 @@ def insert_atributes(producto):
         producto[0].picture = picture
 
 
-@app.route('/carrito/', methods = ['GET',])
+@app.route('/carrito/', methods=['GET'])
 @login_required
 def cart():
     cart = Producto.query.join(Carro).filter(
@@ -54,7 +54,7 @@ def cart():
     return render_template('_views/carrito.html', productos=cart, total=total_price, form=form)
 
 
-@app.route('/carrito/', methods = ['POST',])
+@app.route('/carrito/', methods=['POST'])
 @login_required
 def delete_all_cart():
     products = Carro.query.filter_by(id_usuario = get_user_id()).all()
@@ -68,7 +68,7 @@ def delete_all_cart():
     return make_response(redirect(url_for('index')))
 
 
-@app.route('/carrito/add/', methods = ['POST',])
+@app.route('/carrito/add/', methods=['POST'])
 @login_required
 def add_cart():
     form = AddToCart(request.form)
@@ -87,7 +87,7 @@ def add_cart():
     return make_response(redirect(url_for('cart')))
 
 
-@app.route('/carrito/delete/', methods = ['POST',])
+@app.route('/carrito/delete/', methods=['POST'])
 @login_required
 def delete_cart():
     form = UpdateCart(request.form)

@@ -7,6 +7,9 @@ from flask import make_response
 from flask import redirect
 from flask import url_for
 from flask import flash
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField
+from wtforms.validators import NumberRange, DataRequired
 
 
 from ..models import *
@@ -14,36 +17,47 @@ from ..util import *
 from ..decorators import *
 
 
-@app.route('/lista/add/', methods = ['POST',])
+class UpdateList(FlaskForm):
+    pk = IntegerField('pk', validators=[NumberRange(min=0)])
+    name = StringField('name', validators=[DataRequired()])
+
+
+@app.route('/lista/add/', methods=['POST'])
 @login_required
 def add_to_list():
-    pk = request.form['pk']
+    form = UpdateList(request.form)
+    pk = form.data['pk']
+    name = form.data['name']
     date = datetime.datetime.utcnow()
 
-    product = Lista('favorito', date, get_user_id(), pk)
-    db.session.add(product)
-    flash('Has añadido {} a favoritos'.format(favorite.nombre), 'info')
+    if form.validate_on_submit():
+        product = Lista('favorito', date, get_user_id(), pk)
+        db.session.add(product)
+        flash('Has añadido {} a favoritos'.format(name), 'info')
 
-    db.session.commit()
+        db.session.commit()
     # TODO: redirect to product detail
     return make_response(redirect(url_for('cart')))
 
 
-@app.route('/lista/delete/', methods = ['POST',])
+@app.route('/lista/delete/', methods=['POST'])
 @login_required
 def delete_from_list():
-    pk = request.form['pk']
+    form = UpdateList(request.form)
+    pk = form.data['pk']
+    name = form.data['name']
 
-    products = Lista.query.filter_by(
+    if form.validate_on_submit():
+        products = Lista.query.filter_by(
             id_usuario = get_user_id(),
             id_producto = pk,
             accion = 'favorito',
             ).all()
 
-    for favorite in products:
-        db.session.delete(favorite)
-        flash('Has eliminado {} de favoritos'.format(favorite.nombre), 'info')
+        for favorite in products:
+            db.session.delete(favorite)
+            flash('Has eliminado {} de favoritos'.format(name), 'info')
 
-    db.session.commit()
-    # TODO: redirect to profile
-    return make_response(redirect(url_for('cart')))
+        db.session.commit()
+
+    return make_response(redirect(url_for('perfil')))

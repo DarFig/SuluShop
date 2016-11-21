@@ -62,17 +62,17 @@ def get_product_cover(pk):
 
 
 def get_action_list():
-    actions = Lista.query.filter_by(
-            id_usuario=get_user_id(),
-            ).all()
+    actions = Producto.query.join(Lista).filter(
+            Lista.id_usuario == get_user_id()
+            ).add_columns(Lista.fecha).all()
 
     return actions
 
 
 def get_favorite_list():
-    favorites = Lista.query.filter_by(
-            id_usuario=get_user_id(),
-            accion='favorito',
-            ).all()
+    favorites = Producto.query.join(Lista).filter(
+            Lista.id_usuario == get_user_id(),
+            Lista.accion == 'favorito',
+            ).add_columns(Lista.fecha).all()
 
     return favorites
