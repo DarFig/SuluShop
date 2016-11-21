@@ -16,20 +16,20 @@ Perfil | {{ super() }}
 			</h1>
 			<hr>
 			<div class="row">
-				{% for saves in save%}
+
 				<div class="col-md-3">
-					<img alt="Bootstrap Image Preview" src="{{saves[6]}}"/ width=200 height=200><br/></br>
+					<img alt="Bootstrap Image Preview" src="{{user.imagen}}"/ width=200 height=200><br/></br>
 				<button type="file" class="btn btn-default">Cambiar imagen...</button>
 				</div>
 				<div class="col-md-9">
 				
-					<p><b>Nombre:</b><br>{{saves[0] }}<br></p>
-					<p><b>Apellidos:</b><br>{{saves[1]}}<br></p>
-					<p><b>Fecha de nacimiento:</b><br>{{ saves[2] }}<br></p>
-					<p><b>Direccion:</b><br>{{ saves[3] }}<br></p>
-					<p><b>Telefono:</b><br>{{saves[4] }}<br></p>
-					<p><b>E-mail:</b><br>{{saves[5]}}<br></p>
-					{% endfor %}
+					<p><b>Nombre:</b><br>{{user.nombre}}<br></p>
+					<p><b>Apellidos:</b><br>{{user.apellidos}}<br></p>
+					<p><b>Fecha de nacimiento:</b><br>{{ user.fecha_nacimiento}}<br></p>
+					<p><b>Direccion:</b><br>{{ user.direccion }}<br></p>
+					<p><b>Telefono:</b><br>{{user.telefono}}<br></p>
+					<p><b>E-mail:</b><br>{{user.email}}<br></p>
+
 					<br/><a href="contraseña.html"><button type="button" class="btn btn-default">Cambiar contrasena</button>
 					<a href="modificar.html"><button type="button" class="btn btn-default">Modificar datos</button></a>
 					<br/><a href="/deletUser/">Eliminar cuenta</a>

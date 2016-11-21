@@ -5,19 +5,28 @@ from flask import render_template
 from flask import redirect
 from flask import url_for
 from flask import make_response
+from sqlalchemy.sql import func
 
-
-from ..views import mysql
+from ..models import *
+from ..views import *
 from ..util import *
 
 def insert_usuario(data):
-	cur = mysql.connection.cursor()
-	cur.execute('''INSERT INTO usuario (nombre, apellidos, fecha_nacimiento, direccion, email, telefono, contrasena, imagen)
-	VALUES (%s, %s, %s, %s, %s, %s, %s, %s)''', (data.get('userLogin[nombre]', ' '), data.get('userLogin[apellidos]', ' '), data.get('userLogin[nacimiento]', ' '), data.get('userLogin[direccion]', ' '), data.get('userLogin[email]', ' '), data.get('userLogin[telefono]', ' '), data.get('userLogin[password]', ' '), '/static/img/avatar.jpg'))
-	mysql.connection.commit()
+	usuario = Usuario()
+	usuario.nombre = data.get('userLogin[nombre]', ' ')
+	usuario.apellidos = data.get('userLogin[apellidos]', ' ')
+	usuario.fecha_nacimiento = data.get('userLogin[nacimiento]', ' ')
+	usuario.direccion = data.get('userLogin[direccion]', ' ')
+	usuario.email = data.get('userLogin[email]', ' ')
+	usuario.telefono = data.get('userLogin[telefono]', ' ')
+	usuario.contrasena = data.get('userLogin[password]', ' ')
+	usuario.imagen = '/static/img/avatar.jpg'
+	db.session.add(usuario)
+	db.session.commit()
 
 
 @app.route('/registro', methods=['POST'])
+@logout_required
 def registro():
 	response = make_response( redirect(url_for('perfil')))
 	data = get_user_cookie()

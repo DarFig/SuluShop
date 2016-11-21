@@ -6,9 +6,12 @@ from flask import redirect
 from flask import url_for
 from flask import make_response
 from flask import session
+from sqlalchemy.sql import func
 
-from ..views import mysql
+from ..models import *
+from ..views import *
 from ..util import *
+
 
 @app.route('/login/')
 @logout_required
@@ -20,12 +23,10 @@ def regLog():
 @logout_required
 def login():
 	formulario = dict(request.form.items())
+	e_mail = formulario.get('userLogin[email]', ' ')
+	clave = get_user_contrasena(e_mail)
 	data = get_user_cookie()
-	cur = mysql.connection.cursor()
-	cur.execute('''SELECT contrasena FROM usuario where email = %s ''', [formulario.get('userLogin[email]', ' ')] )
-	clave = cur.fetchone()
-	
-	if clave and formulario.get('userLogin[password]', ' ') == clave[0]:
+	if clave and formulario.get('userLogin[password]', ' ') == clave:
 		data.update(dict(request.form.items()))
 		response = make_response(redirect(url_for('index')))
 		response.set_cookie('character', json.dumps(data))

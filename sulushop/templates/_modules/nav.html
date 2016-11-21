@@ -12,7 +12,7 @@
         {% if logueado %}
         <a href="{{ url_for('perfil') }}" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Perfil</a>
         {% else %}
-        <a href="{{ url_for('cart') }}" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Login</a>
+        <a href="{{ url_for('login') }}" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Login</a>
         {% endif %}
         <a href="{{ url_for('cart') }}" class="btn btn-warning navbar-btn glyphicon glyphicon-shopping-cart"></a>
       </div>
