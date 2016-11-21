@@ -38,7 +38,9 @@ Carrito | {{ super() }}
           {{ producto.cantidad }}
         </div>
         <div class="col-md-2">
-          <input type="hidden" name="pk" value="{{ producto[0].id }}">
+          {{ form.hidden_tag() }}
+          {{ form.pk(type="hidden", value=producto[0].id) }}
+          {{ form.name(type="hidden", value=producto[0].nombre) }}
           <button class="btn btn-danger btn-sm" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
         </div>
       </div>

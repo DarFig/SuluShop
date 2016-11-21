@@ -7,11 +7,23 @@ from flask import make_response
 from flask import redirect
 from flask import url_for
 from flask import flash
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField
+from wtforms.validators import NumberRange, DataRequired
 
 
 from ..models import *
 from ..util import *
 from ..decorators import *
+
+
+class UpdateCart(FlaskForm):
+    pk = IntegerField('pk', validators=[NumberRange(min=0)])
+    name = StringField('pk', validators=[DataRequired()])
+
+
+class AddToCart(UpdateCart):
+    quantity = IntegerField('pk', validators=[NumberRange(min=1)])
 
 
 def insert_atributes(producto):
@@ -37,7 +49,9 @@ def cart():
         insert_atributes(producto)
         total_price += producto[0].total
 
-    return render_template('_views/carrito.html', productos=cart, total=total_price)
+    form = UpdateCart()
+
+    return render_template('_views/carrito.html', productos=cart, total=total_price, form=form)
 
 
 @app.route('/carrito/', methods = ['POST',])
@@ -51,22 +65,24 @@ def delete_all_cart():
 
     db.session.commit()
 
-    # TODO: redirect to index
-    return make_response(redirect(url_for('cart')))
+    return make_response(redirect(url_for('index')))
 
 
 @app.route('/carrito/add/', methods = ['POST',])
 @login_required
 def add_cart():
-    pk = request.form['pk']
-    quantity = request.form['cantidad']
-    name = request.form['nombre']
+    form = AddToCart(request.form)
+    quantity = form.data['quantity']
+    pk = form.data['pk']
+    name = form.data['name']
 
-    product = Carro(quantity, get_user_id(), pk)
-    db.session.add(product)
-    db.session.commit()
+    if form.validate_on_submit():
+        product = Carro(quantity, get_user_id(), pk)
+        db.session.add(product)
 
-    flash('Has añadido {} al carrito'.format(name), 'success')
+        db.session.commit()
+
+        flash('Has añadido {} al carrito'.format(name), 'success')
 
     return make_response(redirect(url_for('cart')))
 
@@ -74,17 +90,20 @@ def add_cart():
 @app.route('/carrito/delete/', methods = ['POST',])
 @login_required
 def delete_cart():
-    pk = request.form['pk']
+    form = UpdateCart(request.form)
+    pk = form.data['pk']
+    name = form.data['name']
 
-    products = Carro.query.filter_by(
+    if form.validate_on_submit():
+        products = Carro.query.filter_by(
             id_usuario = get_user_id(),
             id_producto = pk,
             ).all()
 
-    for cart in products:
-        db.session.delete(cart)
-        flash('Has eliminado {} del carrito'.format(cart.nombre), 'danger')
+        for cart in products:
+            db.session.delete(cart)
+            flash('Has eliminado {} del carrito'.format(name), 'danger')
 
-    db.session.commit()
+        db.session.commit()
 
     return make_response(redirect(url_for('cart')))

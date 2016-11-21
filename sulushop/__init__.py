@@ -10,7 +10,7 @@ app.secret_key = 'some_secret'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-gzip = Gzip(app)
+# gzip = Gzip(app)
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://sulushop:1234sulushop@localhost/sulushop"
