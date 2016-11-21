@@ -1,15 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import datetime
 from sulushop import app
 from flask import request
-from flask import render_template
 from flask import make_response
 from flask import redirect
 from flask import url_for
-from sqlalchemy.sql import func
+from flask import flash
 
 
 from ..models import *
 from ..util import *
+from ..decorators import *
 
 
 @app.route('/lista/add/', methods = ['POST',])
@@ -20,6 +22,8 @@ def add_to_list():
 
     product = Lista('favorito', date, get_user_id(), pk)
     db.session.add(product)
+    flash('Has añadido {} a favoritos'.format(favorite.nombre), 'info')
+
     db.session.commit()
     # TODO: redirect to product detail
     return make_response(redirect(url_for('cart')))
@@ -38,6 +42,7 @@ def delete_from_list():
 
     for favorite in products:
         db.session.delete(favorite)
+        flash('Has eliminado {} de favoritos'.format(favorite.nombre), 'info')
 
     db.session.commit()
     # TODO: redirect to profile

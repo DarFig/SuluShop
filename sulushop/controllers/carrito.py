@@ -1,14 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from sulushop import app
 from flask import request
 from flask import render_template
 from flask import make_response
 from flask import redirect
 from flask import url_for
-from sqlalchemy.sql import func
+from flask import flash
 
 
 from ..models import *
 from ..util import *
+from ..decorators import *
 
 
 def insert_atributes(producto):
@@ -44,6 +47,7 @@ def delete_all_cart():
 
     for cart in products:
         db.session.delete(cart)
+        flash('Has eliminado {} del carrito'.format(cart.nombre), 'danger')
 
     db.session.commit()
 
@@ -56,10 +60,13 @@ def delete_all_cart():
 def add_cart():
     pk = request.form['pk']
     quantity = request.form['cantidad']
+    name = request.form['nombre']
 
     product = Carro(quantity, get_user_id(), pk)
     db.session.add(product)
     db.session.commit()
+
+    flash('Has añadido {} al carrito'.format(name), 'success')
 
     return make_response(redirect(url_for('cart')))
 
@@ -76,6 +83,7 @@ def delete_cart():
 
     for cart in products:
         db.session.delete(cart)
+        flash('Has eliminado {} del carrito'.format(cart.nombre), 'danger')
 
     db.session.commit()
 

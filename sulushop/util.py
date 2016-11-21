@@ -1,26 +1,13 @@
+from sulushop import login_manager
 import json
-from functools import wraps
-from flask import request, redirect, url_for
+from flask import request
 
 from models import *
 
 
-def login_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if not get_user_cookie():
-            return redirect(url_for('login', next=request.url))
-        return f(*args, **kwargs)
-    return decorated_function
-
-
-def logout_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if get_user_cookie():
-            return redirect(url_for('perfil', next=request.url))
-        return f(*args, **kwargs)
-    return decorated_function
+@login_manager.user_loader
+def load_user(user_id):
+        return Usuario.get(user_id)
 
 
 def get_user_cookie():
@@ -76,8 +63,7 @@ def get_product_cover(pk):
 
 def get_action_list():
     actions = Lista.query.filter_by(
-            id_usuario = get_user_id(),
-            id_producto = pk,
+            id_usuario=get_user_id(),
             ).all()
 
     return actions
@@ -85,9 +71,8 @@ def get_action_list():
 
 def get_favorite_list():
     favorites = Lista.query.filter_by(
-            id_usuario = get_user_id(),
-            id_producto = pk,
-            accion = 'favorito',
+            id_usuario=get_user_id(),
+            accion='favorito',
             ).all()
 
     return favorites
