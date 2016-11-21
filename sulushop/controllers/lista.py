@@ -1,15 +1,14 @@
 import datetime
 from sulushop import app
 from flask import request
-from flask import render_template
 from flask import make_response
 from flask import redirect
 from flask import url_for
-from sqlalchemy.sql import func
 
 
 from ..models import *
 from ..util import *
+from ..decorators import *
 
 
 @app.route('/lista/add/', methods = ['POST',])

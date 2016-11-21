@@ -1,11 +1,25 @@
 from sulushop import db
-from sqlalchemy.orm import relationship
 
 db.Model.metadata.reflect(db.engine)
 
 
 class Usuario(db.Model):
     __table__ = db.Model.metadata.tables['usuario']
+
+    def get_id(self):
+        return unicode(self.id)
+
+    def is_active(self):
+        """True, as all users are active."""
+        return True
+
+    def is_authenticated(self):
+        """Return True if the user is authenticated."""
+        return self.authenticated
+
+    def is_anonymous(self):
+        """False, as anonymous users aren't supported."""
+        return False
 
 
 class Carro(db.Model):

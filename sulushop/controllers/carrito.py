@@ -4,11 +4,11 @@ from flask import render_template
 from flask import make_response
 from flask import redirect
 from flask import url_for
-from sqlalchemy.sql import func
 
 
 from ..models import *
 from ..util import *
+from ..decorators import *
 
 
 def insert_atributes(producto):
