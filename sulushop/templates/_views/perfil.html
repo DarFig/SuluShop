@@ -60,14 +60,14 @@ Perfil | {{ super() }}
           {% for object in action %}
           <tr class="active">
             <td>
-              <!--<img src="https://docs.gimp.org/2.2/images/dialogs/dialogs-icon-eye.png"/>-->
-              {{ object[0].accion }}
+              <img src="static/img/{{ object.accion }}.png" style="width: 50px;"/>
             </td>
             <td>
               {{ object.fecha }}
             </td>
             <td>
               {{ object[0].nombre }}
+              {{ object[0].accion}}
             </td>
           </tr>
           {% endfor %}

@@ -64,7 +64,7 @@ def get_product_cover(pk):
 def get_action_list():
     actions = Producto.query.join(Lista).filter(
             Lista.id_usuario == get_user_id()
-            ).add_columns(Lista.fecha).all()
+            ).add_columns(Lista.fecha, Lista.accion).all()
 
     return actions
 

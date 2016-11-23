@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import datetime
 from sulushop import app
 from flask import request
 from flask import render_template
@@ -60,8 +61,19 @@ def delete_all_cart():
     products = Carro.query.filter_by(id_usuario = get_user_id()).all()
 
     for cart in products:
+        lista = Lista();
+        lista.id_usuario = get_user_id()
+        lista.id_producto = cart.id_producto
+        lista.fecha = datetime.datetime.utcnow()
+        lista.cantidad = cart.cantidad
+        producto = Producto.query.get(cart.id_producto)
+        lista.precio = producto.precio
+        lista.accion = 'Comprado'
+
+        db.session.add(lista)
         db.session.delete(cart)
-        flash('Has eliminado {} del carrito'.format(cart.nombre), 'danger')
+        flash('Has eliminado {} del carrito'.format(
+            producto.nombre), 'danger')
 
     db.session.commit()
 

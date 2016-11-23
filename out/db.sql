@@ -92,6 +92,8 @@ CREATE TABLE IF NOT EXISTS lista(
 	id int unsigned primary key auto_increment,
 	accion varchar(60) not null,
 	fecha date not null,
+	precio double,
+  cantidad int;
 	id_usuario int unsigned,
 	index (id_usuario),
 	foreign key (id_usuario)

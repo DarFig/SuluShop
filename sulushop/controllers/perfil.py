@@ -5,7 +5,7 @@ from flask import render_template
 from ..models import *
 from ..views import *
 from ..util import *
-from lista import UpdateList
+from favorito import UpdateList
 
 @app.route('/deletUser/')
 @login_required
