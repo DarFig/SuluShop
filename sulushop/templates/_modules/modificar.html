@@ -1,42 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="unizar"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#d43f3a"/>
-    <link rel="icon" href="">
-    <title>SuluShop | Modificar perfil</title>
-    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../static/css/style.css" rel="stylesheet">
-  </head>
-  <body>
-<nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="" href="../../index.html">
-            <img alt="Brand" src="../../static/img/eshop.png">
-          </a>
-        </div>
-        <p class="navbar-text">SuluShop company</p>
-        <div class="navbar-right">
-          <div class="btn-group" role="group">
-            <a href="perfil.html"class="btn btn-default navbar-btn glyphicon glyphicon-user"> Ruben</a>
-            <a href="lista.html"class="btn btn-warning navbar-btn glyphicon glyphicon-shopping-cart"></a>
-          </div>
-        </div>
-        <div class="navbar-right">
-          <form class="navbar-form" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="buscar">
-            </div>
-            <button type="submit" class="btn btn-default">Buscar</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-    <!--fin barra de navegacion-->
-    <div class="container-fluid">
+{% extends "_layouts/base.html" %}
+
+{% block title %}
+Modificar | {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8">
 			<h1 class="text-left">
@@ -45,130 +15,40 @@
 			<hr>
 			<div class="row">
 				<div class="col-md-3">
-					<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/"/ width=200 height=200><br/>
+					<img alt="Bootstrap Image Preview" src="{{user.imagen}}"/ width=200 height=200><br/>
 				</div>
-				<div class="col-md-9">
-					<form>
+				<div class="col-md-7">
+					<div class="container-fluid">
+					<form name="modificar" method="POST" action="{{ url_for( 'mod_datos' ) }}">
+						<div>
   <div class="form-group">
     <label for="exampleInputName">Nombre</label>
-    <input type="Nombre" class="form-control" id="exampleInputName" placeholder="Nombre" value="Ruben">
-  </div>
+		{{ registroForm.nombre(class="form-control", id="userRegistro_nombre", value=saves.get('nombre', ''), required="required", placeholder="Nombre", type="text")}}
+	</div>
   <div class="form-group">
     <label for="exampleInputApellidos">Apellidos</label>
-    <input type="apellidos" class="form-control" id="exampleInputApellidos" placeholder="Apellidos" value="Jarne Cabanero">
+		{{ registroForm.apellidos(class="form-control", id="userRegistro_apellidos", value=saves.get('apellidos', ''), required="required", placeholder="Apellidos", type="text")}}
 	</div>
 <div class="form-group">
     <label for="exampleInputFecha">Fecha</label>
-    <input type="date" class="form-control" id="exampleInputFecha" placeholder="dd/mm/aaaa" value="12/01/1996">
-  </div>
+		{{ registroForm.nacimiento(class="form-control", id="userRegistro_nacimiento", value=saves.get('nacimiento', ''), required="required", placeholder="Año Nacimiento", type="text")}}
+	</div>
 	<div class="form-group">
     <label for="exampleInputDireccion">Direccion</label>
-    <input type="direccion" class="form-control" id="exampleInputDireccion" placeholder="Direccion" value="Alarife Marien de Marguan 6,6,A">
-  </div>
+		{{ registroForm.direccion(class="form-control", id="userRegistro_direccion", value=saves.get('direccion', ''), required="required", placeholder="Direccion", type="text")}}
+	</div>
 	<div class="form-group">
     <label for="exampleInputTelefono">Telefono</label>
-    <input type="phone" class="form-control" id="exampleInputTelefono" placeholder="Telefono" value="645515267">
-  </div>
+		{{ registroForm.telefono(class="form-control", id="userRegistro_telefono", value=saves.get('telefono', ''), required="required", placeholder="Telefono", type="text")}}
+	</div>
 	<div class="form-group">
     <label for="exampleInputEmail1">E-mail</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="rubenbros@hotmail.es">
-  </div>
-  <button type="submit" class="btn btn-primary">Guardar Cambios</button></br></br><button type="reset" class="btn btn-default">Restablecer Cambios</button>
-</form>
-<a href="perfil.html"></br><button type="submit" class="btn btn-default">Cancelar</button></a>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<h3>
-				Actividad.
-			</h3>
-			<hr>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							Tipo
-						</th>
-						<th>
-							Fecha
-						</th>
-						<th>
-							Producto
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="active">
-						<td>
-							<img src="https://docs.gimp.org/2.2/images/dialogs/dialogs-icon-eye.png"/>
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							smartphone generico
-						</td>
-					</tr>
-					<tr class="active">
-						<td>
-							<img src="https://docs.gimp.org/2.2/images/dialogs/dialogs-icon-eye.png"/>
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							pizza sabrosa
-						</td>
-					</tr>
-					<tr class="active">
-						<td>
-							<img src="http://www.alfombraskilim.com/themes/kilim/images/ico_estrella_off.png"/>
-						</td>
-						<td>
-							02/04/2012
-						</td>
-						<td>
-							sentido de la vida
-						</td>
-					</tr>
-					<tr class="active">
-						<td>
-							<img src="http://www.cosmoeducacion.com/images/2016/cursos/iconos/dolar.png"/>
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							producto rebajado
-						</td>
-					</tr>
-					<tr class="active">
-						<td>
-							<img src="http://www.alfombraskilim.com/themes/kilim/images/ico_estrella_off.png"/>
-						</td>
-						<td>
-							04/04/2012
-						</td>
-						<td>
-							mas pizza
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		{{ registroForm.email(class="form-control", id="userLogin_email", value=saves.get('email', ' '), required="required", placeholder="Email", type="email") }}
 	</div>
+	</div>
+  <button type="submit" class="btn btn-default">Guardar Cambios</button></br>
+	<a href="/perfil/"></br><button class="btn btn-default">Cancelar</button></a>
+	</form>
 </div>
-	<hr>
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">
-        Ipsum incidunt blanditiis iusto facere dignissimos. Aperiam repellendus veniam vitae porro impedit vitae veritatis. Expedita sint exercitationem quo optio impedit? Autem neque nihil magni odit maiores expedita? Ipsa porro id.
-        </p>
-      </div>
-      <script src="../../static/js/jquery-3.1.1.min.js"></script>
-      <script src="../../static/js/bootstrap.min.js"></script>
-      <script src="../../static/js/vendor/stars.js"></script>
-    </footer>
-  </body>
-</html>
+
+{% endblock %}

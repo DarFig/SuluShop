@@ -19,7 +19,7 @@ def get_user_cookie():
 
 
 def get_user_id():
-    e_mail = get_user_cookie()['userLogin[email]']
+    e_mail = get_user_cookie()['email']
 
     user = Usuario.query.filter_by(email=e_mail).first()
 
@@ -30,7 +30,7 @@ def get_user_contrasena(e_mail):
     return user.contrasena
 
 def get_user():
-    e_mail = get_user_cookie()['userLogin[email]']
+    e_mail = get_user_cookie()['email']
 
     user = Usuario.query.filter_by(email=e_mail).first()
 
