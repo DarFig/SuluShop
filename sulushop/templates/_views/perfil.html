@@ -19,7 +19,13 @@ Perfil | {{ super() }}
 
         <div class="col-md-3">
           <img alt="Bootstrap Image Preview" src="{{user.imagen}}"/ width=200 height=200><br/></br>
-          <button type="file" class="btn btn-default">Cambiar imagen...</button>
+          <form name="mod_img" method="POST" action="{{ url_for( 'mod_img' ) }}">
+            <div class="form-group">
+              {{ imgForm.imagen(class="form-control", id="user_imagen", placeholder="/url/Imagen/", type="url") }}
+            </div>
+            <button id="user_imga_but" name="user_imga_but" class="btn btn-default" type="submit">Cambiar imagen</button>
+          </form>
+
         </div>
         <div class="col-md-9">
 

@@ -3,12 +3,22 @@ from flask import request
 from flask import render_template
 from flask import flash
 
+from flask_wtf import FlaskForm
+from wtforms import Form, BooleanField, StringField, PasswordField, validators
+from wtforms.validators import *
+
 from ..models import *
 from ..views import *
 from ..util import *
 
 from favorito import UpdateList
 from registro import RegistroForm
+
+class ImgPerfilForm(Form):
+    imagen = StringField('imagen')
+
+
+
 
 @app.route('/deletUser/')
 @login_required
@@ -31,8 +41,21 @@ def perfil():
     action=get_action_list()
     favorites=get_favorite_list()
     form = UpdateList()
+    imgForm = ImgPerfilForm()
     return render_template("_views/perfil.html", user=usuario, logueado=data,
-            action=action, favorites=favorites, form=form)
+            action=action, favorites=favorites, form=form, imgForm=imgForm)
+
+@app.route('/mod_img/', methods=['POST'])
+@login_required
+def mod_img():
+    formulario = ImgPerfilForm(request.form)
+    usuario = get_user()
+    db.session.delete(usuario)
+    usuario.imagen = formulario.data['imagen']
+    db.session.add(usuario)
+    db.session.commit()
+    flash('Imagen de perfil cambiada', 'success')
+    return perfil()
 
 @app.route('/mod_datos/', methods=['GET', 'POST'])
 @login_required
