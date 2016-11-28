@@ -1,11 +1,10 @@
 import json
 from sulushop import app
 from flask import request
-from flask import render_template
+from flask import session
 from flask import redirect
 from flask import url_for
 from flask import make_response
-from sqlalchemy.sql import func
 from flask import flash
 
 from flask_wtf import FlaskForm
