@@ -1,8 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from htmlmin.main import minify
-from flask.ext.login import LoginManager
-from flask.ext.gzip import Gzip
+from flask_login import LoginManager
+from flask_compress import Compress
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 
 app = Flask(__name__)
@@ -10,11 +13,11 @@ app.secret_key = 'some_secret'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-# gzip = Gzip(app)
+Compress(app)
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://sulushop:1234sulushop@localhost/sulushop"
-
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 

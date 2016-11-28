@@ -8,7 +8,7 @@ from flask import redirect
 from flask import url_for
 from flask import flash
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField
+from wtforms import StringField, IntegerField, DecimalField
 from wtforms.validators import NumberRange, DataRequired
 
 
@@ -28,16 +28,20 @@ def add_to_list():
     form = UpdateList(request.form)
     pk = form.data['pk']
     name = form.data['name']
-    date = datetime.datetime.utcnow()
 
     if form.validate_on_submit():
-        product = Lista('favorito', date, get_user_id(), pk)
+        product = Lista()
+        product.accion = 'favorito'
+        product.fecha = datetime.datetime.utcnow()
+        product.id_usuario = get_user_id()
+        product.id_producto = pk
+
         db.session.add(product)
         flash('Has añadido {} a favoritos'.format(name), 'info')
 
-        db.session.commit()
-    # TODO: redirect to product detail
-    return make_response(redirect(url_for('cart')))
+    db.session.commit()
+
+    return make_response(redirect(url_for('details', name=name, pk=pk)))
 
 
 @app.route('/lista/delete/', methods=['POST'])

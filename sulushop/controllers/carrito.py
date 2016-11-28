@@ -89,7 +89,10 @@ def add_cart():
     name = form.data['name']
 
     if form.validate_on_submit():
-        product = Carro(quantity, get_user_id(), pk)
+        product = Carro()
+        product.cantidad = quantity
+        product.id_producto = pk
+        product.id_usuario = get_user_id()
         db.session.add(product)
 
         db.session.commit()

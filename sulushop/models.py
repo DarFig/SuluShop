@@ -40,3 +40,8 @@ class FotoProducto(db.Model):
 
 class Lista(db.Model):
     __table__ = db.Model.metadata.tables['lista']
+
+
+class Puntuacion(db.Model):
+    __table__ = db.Model.metadata.tables['puntuacion']
+
