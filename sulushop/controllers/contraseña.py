@@ -23,7 +23,7 @@ class cambioForm(Form):
 	
 @app.route('/change', methods=['POST'])
 @logout_required
-def registro():
+def cambio():
 	formulario = cambioForm(request.form)
 	if formulario.newPassword != formulario.repeatPassword:
 		flash('Las contrasenas no coinciden', 'danger')
