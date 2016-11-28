@@ -82,10 +82,10 @@ def mod_datos():
     	usuario.telefono = data.get('telefono', ' ')
         db.session.add(usuario)
         db.session.commit()
-
+        imgForm = ImgPerfilForm()
         action=get_action_list()
         favorites=get_favorite_list()
         form = UpdateList()
         flash('Datos Modificados Satisfactoriamente', 'success')
         return render_template("_views/perfil.html", user=usuario, logueado=data,
-                action=action, favorites=favorites, form=form)
+                action=action, favorites=favorites, form=form, imgForm=imgForm)
