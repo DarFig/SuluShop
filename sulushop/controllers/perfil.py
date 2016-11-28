@@ -13,13 +13,13 @@ from ..util import *
 
 from favorito import UpdateList
 from registro import RegistroForm
-
+#formulario para modificar imagen de perfil
 class ImgPerfilForm(Form):
     imagen = StringField('imagen')
 
 
 
-
+#elimina la cuenta del usuario actual
 @app.route('/deletUser/')
 @login_required
 def deletUser():
@@ -32,7 +32,7 @@ def deletUser():
     response.set_cookie('character', json.dumps(data))
     return response
 
-
+#perfil get, devuelve la informacion del perfil
 @app.route('/perfil/', methods=['GET'])
 @login_required
 def perfil():
@@ -45,6 +45,7 @@ def perfil():
     return render_template("_views/perfil.html", user=usuario, logueado=data,
             action=action, favorites=favorites, form=form, imgForm=imgForm)
 
+#modificar la imagen de perfil del usuario mediante url
 @app.route('/mod_img/', methods=['POST'])
 @login_required
 def mod_img():
@@ -57,6 +58,8 @@ def mod_img():
     flash('Imagen de perfil cambiada', 'success')
     return perfil()
 
+#modificar datos de usuario [get, post]
+#permite modificar los datos almacenados referentes al usuario
 @app.route('/mod_datos/', methods=['GET', 'POST'])
 @login_required
 def mod_datos():

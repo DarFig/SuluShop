@@ -16,11 +16,11 @@ from ..views import *
 from ..util import *
 from registro import RegistroForm
 
-
+#formulario para login
 class LoginForm(Form):
     email = StringField('email', validators=[NumberRange(min=4)])
     password = PasswordField('password')
-
+#login get
 @app.route('/login/')
 @logout_required
 def regLog():
@@ -28,23 +28,7 @@ def regLog():
     regform = RegistroForm()
     data = get_user_cookie()
     return render_template("_views/registro_login.html", saves=data, loginForm = formulario, registroForm =regform)
-
-#@app.route('/login/', methods=['POST'])
-#@logout_required
-#def login():
-#	formulario = dict(request.form.items())
-#	e_mail = formulario.get('userLogin[email]', ' ')
-#	clave = get_user_contrasena(e_mail)
-#	data = get_user_cookie()
-#	if clave and formulario.get('userLogin[password]', ' ') == clave:
-#		data.update(dict(request.form.items()))
-#		response = make_response(redirect(url_for('index')))
-#		response.set_cookie('character', json.dumps(data))
-#	else :
-#		flash('Datos Incorrectos', 'danger')
-#		response = make_response(redirect(url_for('login')))
-#	return response
-
+#login post y validacion del login
 @app.route('/login/', methods=['POST'])
 @logout_required
 def login():
@@ -62,7 +46,7 @@ def login():
         flash('Datos Incorrectos', 'danger')
         response = make_response(redirect(url_for('login')))
     return response
-
+#logout del usuario
 @app.route('/logout/')
 @login_required
 def loggout():

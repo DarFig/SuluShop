@@ -15,7 +15,7 @@ from wtforms.validators import *
 from ..models import *
 from ..views import *
 from ..util import *
-
+#formulario de registro
 class RegistroForm(Form):
 	email = StringField('email', validators=[NumberRange(min=4)])
 	password = PasswordField('password')
@@ -24,7 +24,9 @@ class RegistroForm(Form):
 	nacimiento = StringField('nacimiento')
 	direccion = StringField('direccion')
 	telefono = StringField('telefono')
-
+#inserta un nuevo usario a la base de Datos
+#requiere un parametro cookie('character') con la
+#informacion de registro
 def insert_usuario(data):
 	usuario = Usuario()
 	usuario.nombre = data.get('nombre', ' ')
@@ -38,7 +40,7 @@ def insert_usuario(data):
 	db.session.add(usuario)
 	db.session.commit()
 
-
+#registro post, obtiene datos de registro
 @app.route('/registro', methods=['POST'])
 @logout_required
 def registro():
