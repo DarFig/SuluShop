@@ -16,24 +16,34 @@ from ..models import *
 from ..views import *
 from ..util import *
 
-class cambioForm(Form):
+class CambioForm(Form):
 	oldPassword = PasswordField('oldpassword')
 	newPassword = PasswordField('newpassword')
 	repeatPassword = PasswordField('repeatpassword')
-	
-@app.route('/change', methods=['POST'])
-@logout_required
-def cambio():
-	formulario = cambioForm(request.form)
-	if formulario.newPassword != formulario.repeatPassword:
+
+
+@app.route('/changePassword/', methods=['GET'])
+@login_required
+def cambiarpassw():
+	formulario = CambioForm()
+	data = get_user_cookie()
+	return render_template("_modules/password.html", saves=data, cambioForm = formulario)
+
+@app.route('/changePassword/', methods=['POST'])
+@login_required
+def cambiopassw():
+	formulario = CambioForm(request.form)
+	usuario = get_user()
+	if formulario.data['newPassword'] == formulario.data['repeatPassword'] :
+		if formulario.data['oldPassword'] == usuario.contrasena:
+			db.session.delete(usuario)
+			usuario.contrasena = formulario.data['newPassword']
+			db.session.add(usuario)
+			db.session.commit()
+			return make_response(redirect(url_for('perfil')))
+		else :
+			flash('Contrasena incorrecta', 'danger')
+	        return make_response(redirect(url_for('cambiopassw')))
+	else :
 		flash('Las contrasenas no coinciden', 'danger')
-        return make_response(redirect(url_for('password')))
-	contrasenaa = Usuario.query.filter_by(id=get_user_id()).first().contrasena
-	if formulario.oldPassword != contrasena:
-		flash('Contrasena incorrecta', 'danger')
-        return make_response(redirect(url_for('password')))
-	user = Usuario.query.filter_by(id=get_user_id()).first()
-	user.contrasena = contrasenaa
-	db.session.commit()
-	response = make_response( redirect(url_for('perfil')))
-	return response
+        return make_response(redirect(url_for('cambiopassw')))

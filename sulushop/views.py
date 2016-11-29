@@ -10,7 +10,7 @@ from controllers.carrito import *
 from controllers.login import *
 from controllers.perfil import *
 from controllers.detalle import *
-
+from controllers.password import *
 
 @app.route('/')
 @app.route('/<int:page>')
