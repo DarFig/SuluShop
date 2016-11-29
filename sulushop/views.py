@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from sulushop import app
 from flask import render_template
 
@@ -10,17 +12,15 @@ from controllers.carrito import *
 from controllers.login import *
 from controllers.perfil import *
 from controllers.detalle import *
-<<<<<<< HEAD
 from controllers.password import *
-=======
+
 
 '''
 Router: 	accesible mediante HTTP/HTTPS
->>>>>>> 688548684cfafc6ad0acf0ea623a2a06ee819e56
 
 Descripcion: 	Obtiene todos los productos de <page> de la base de datos y los preparamos para mostrarlos
                 en html obteniendo a parte su imagen principal.
-                
+
 Funcion:	Lista todos los productos de la pagina en la que nos encontramos
 '''
 @app.route('/')
@@ -37,7 +37,7 @@ def index(page=1):
 '''
 Descripcion: 	Busca en la base de datos la imagen principal de el producto y lo agrega a sus campos para
                 el formateado en http.
-                
+
 Funcion:	Agrega a un producto un atributo con su imagen principal
 '''
 def insert_atributes(producto):
