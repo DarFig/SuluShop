@@ -20,7 +20,15 @@ class cambioForm(Form):
 	oldPassword = PasswordField('oldpassword')
 	newPassword = PasswordField('newpassword')
 	repeatPassword = PasswordField('repeatpassword')
-	
+'''
+Router: 	solo accesible mediante el método POST de HTTP/HTTPS
+
+Descripcion: 	cambio() toma los datos del formulario cambioForm y los analiza. oldPassword es la contrasena del usuario
+		antigua que quiere cambiar, si no coincide con la almacenada en la base de datos, aparece un mensaje de
+		error. newPassword y repeatPassword son la nueva contrasena deseada, si no coinciden, aparece un mensaje
+		de error. Si todo es correcto,la antigua contrasena sustituye a la nueva contrasena en la base de datos
+Funcion:	Cambia la contrasena del usuario
+'''
 @app.route('/change', methods=['POST'])
 @logout_required
 def cambio():
